@@ -46,12 +46,14 @@
             <div>
                 <!-- Mark as Complete/Undo -->
                 <form action="{{ route('tasks.update', $task->id) }}" method="POST" style="display:inline;">
-                    @method('PUT')
-                    @csrf
-                    <button class="btn btn-success btn-sm" type="submit">
-                        {{ $task->is_completed ? 'Undo' : 'Complete' }}
-                    </button>
-                </form>
+    @method('PUT')
+    @csrf
+    <input type="hidden" name="toggle_completed" value="1">
+    <button class="btn btn-success btn-sm" type="submit">
+        {{ $task->is_completed ? 'Undo' : 'Complete' }}
+    </button>
+</form>
+
 
                 <!-- Edit Task -->
                 <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
